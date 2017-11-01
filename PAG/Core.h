@@ -5,7 +5,7 @@
 class Core
 {
 private:
-	Window *window;
+	Window window;
 	bool game_is_running;
 	const int TICKS_PER_SECOND = 50;
 	const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;

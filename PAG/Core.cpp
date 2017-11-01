@@ -1,9 +1,13 @@
 #include "Core.h"
+using namespace std;
+#include <stdio.h>
 
 Core::Core()
 {
 	DWORD next_game_tick = GetTickCount();
 	int loops;
+	
+	Window *window = new Window();
 
 	game_is_running = true;
 	while (game_is_running) {
