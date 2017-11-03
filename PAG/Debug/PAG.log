@@ -1,11 +1,2 @@
-﻿  Window.cpp
-c:\users\piotrek\desktop\pag\pag\window.cpp(30): warning C4305: 'return': truncation from 'int' to 'bool'
-c:\users\piotrek\desktop\pag\pag\window.cpp(40): warning C4305: 'return': truncation from 'int' to 'bool'
-  Texture.cpp
-  Generating Code...
-c:\users\piotrek\desktop\pag\pag\window.cpp(80): warning C4715: 'Window::init': not all control paths return a value
-  Compiling...
-  main.cpp
-  Core.cpp
-  Generating Code...
+﻿  Mesh.cpp
   PAG.vcxproj -> C:\Users\Piotrek\Desktop\PAG\Debug\PAG.exe

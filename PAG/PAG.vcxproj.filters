@@ -42,6 +42,9 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -59,12 +62,15 @@
     <ClInclude Include="Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Shaders\vertex.txt">
+    <Text Include="Shaders\fragment.txt">
       <Filter>Shaders</Filter>
     </Text>
-    <Text Include="Shaders\fragment.txt">
+    <Text Include="Shaders\vertex.txt">
       <Filter>Shaders</Filter>
     </Text>
   </ItemGroup>

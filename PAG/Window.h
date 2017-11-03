@@ -12,7 +12,6 @@ private:
 	void processInput(GLFWwindow *window);
 	bool init();
 
-	unsigned int VBO, VAO, EBO;
 	int shaderProgram;
 
 	Shader *ownShader;
