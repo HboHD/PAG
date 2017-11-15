@@ -4,13 +4,16 @@
 #include "stb_image.h"
 #include <iostream>
 
+using namespace std;
+
 class Texture
 {
 private:
 	unsigned int texture;
 public:
 	unsigned int getTexture();
-	Texture();
+
+	Texture(const char* filename);
 	~Texture();
 };
 

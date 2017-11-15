@@ -10,6 +10,7 @@ class Core
 private:
 	Window *window;
 	Texture *texture;
+	Texture *texture2;
 	Mesh *mesh;
 	Shader *shader;
 	bool game_is_running;

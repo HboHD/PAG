@@ -35,10 +35,17 @@ void Core::init()
 	shader = new Shader("Shaders/vertex.txt", "Shaders/fragment.txt");
 
 	// create own texture
-	texture = new Texture();
-
+	texture = new Texture("wall.jpg");
+	stbi_set_flip_vertically_on_load(true);
+	texture2 = new Texture("car.jpg");
+	///////////// kwadrat, druga tekstura, jedna z tekstur do góry nogami, zwizualizowanie pozycji 
 	// create mesh
 	mesh = new Mesh(VBO, VAO, EBO);
+
+	shader->use();
+
+	shader->setInt("texture1", 0);
+	shader->setInt("texture2", 1);
 }
 
 // render loop
@@ -53,12 +60,15 @@ void Core::renderGame()
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	//glBindTexture(GL_TEXTURE_2D, texture->getTexture());
-
 	// drawing triangle
-	shader->use();
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture->getTexture());
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, texture2->getTexture());
+
 	glBindVertexArray(*VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	//glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 	// -------------------------------------------------------------------------------
