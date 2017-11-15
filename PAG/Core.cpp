@@ -38,9 +38,13 @@ void Core::init()
 	texture = new Texture("wall.jpg");
 	stbi_set_flip_vertically_on_load(true);
 	texture2 = new Texture("car.jpg");
-	///////////// kwadrat, druga tekstura, jedna z tekstur do góry nogami, zwizualizowanie pozycji 
+
 	// create mesh
 	mesh = new Mesh(VBO, VAO, EBO);
+
+	// create transform
+	transform = new Transform();
+	transform->scale(glm::vec3(0.5f, 0.5f, 0.5f));
 
 	shader->use();
 
@@ -66,6 +70,12 @@ void Core::renderGame()
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture2->getTexture());
 
+	transform->rotate(glm::vec3(0.0f, 0.0f, 0.01f));
+	cout << i;
+
+	unsigned int transformLoc = glGetUniformLocation(shader->ID, "transform");
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform->getTransform()));
+
 	glBindVertexArray(*VAO);
 	//glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -74,6 +84,7 @@ void Core::renderGame()
 	// -------------------------------------------------------------------------------
 	glfwSwapBuffers(window->window);
 	glfwPollEvents();
+	i++;
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
@@ -90,7 +101,7 @@ void Core::processInput(GLFWwindow *window)
 
 void Core::updateGame()
 {
-	//TODO
+
 }
 
 Core::~Core()

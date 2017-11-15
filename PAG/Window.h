@@ -9,7 +9,6 @@ class Window
 {
 private:
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-	void processInput(GLFWwindow *window);
 	bool init();
 
 	int shaderProgram;
@@ -24,7 +23,6 @@ private:
 public:
 	GLFWwindow* window;
 	Window();
-	void renderGame();
 	~Window();
 };
 
