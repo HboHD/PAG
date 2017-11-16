@@ -36,6 +36,12 @@ bool Window::init()
 		return -1;
 	}
 
+	// configure global opengl state
+	// -----------------------------
+	glEnable(GL_DEPTH_TEST);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 	std::cout << "Finished Window initialization" << std::endl;
 }
 
@@ -46,6 +52,15 @@ void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height
 	// make sure the viewport matches the new window dimensions; note that width and 
 	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
+}
+
+const unsigned int Window::getScrWidth()
+{
+	return SCR_WIDTH;
+}
+const unsigned int Window::getScrHeight()
+{
+	return SCR_HEIGHT;
 }
 
 

@@ -21,6 +21,8 @@ private:
 	const unsigned int SCR_HEIGHT = 768;
 
 public:
+	const unsigned int getScrWidth();
+	const unsigned int getScrHeight();
 	GLFWwindow* window;
 	Window();
 	~Window();

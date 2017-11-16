@@ -17,16 +17,16 @@ void Transform::move(glm::vec3 vector3)
 	transform = glm::translate(transform, vector3);
 }
 
-void Transform::rotate(glm::vec3 vector3)
+void Transform::rotate(glm::vec3 vector3, float speed)
 {
-	transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 50.0f, vector3);
+	transform = glm::rotate(transform, (GLfloat)glfwGetTime() * speed, vector3);
 }
 
 void Transform::recreate(glm::vec3 moveVec3, glm::vec3 rotateVec3)
 {
 	transform = glm::mat4(1.0f);
 	move(moveVec3);
-	rotate(rotateVec3);
+	rotate(rotateVec3, 0.1f);
 }
 
 void Transform::scale(glm::vec3 vector3)
