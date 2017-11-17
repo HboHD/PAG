@@ -14,6 +14,8 @@ const float SPEED = 2.5f;
 const float SENSITIVTY = 0.1f;
 const float ZOOM = 45.0f;
 
+static bool firstMouse;
+static GLfloat lastX, lastY;
 
 // An abstract camera class that processes input and calculates the corresponding Eular Angles, Vectors and Matrices for use in OpenGL
 class Camera
@@ -44,6 +46,7 @@ public:
 	// Constructor with vectors
 	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 	{
+		init();
 		Position = position;
 		WorldUp = up;
 		Yaw = yaw;
@@ -53,11 +56,47 @@ public:
 	// Constructor with scalar values
 	Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 	{
+		init();
 		Position = glm::vec3(posX, posY, posZ);
 		WorldUp = glm::vec3(upX, upY, upZ);
 		Yaw = yaw;
 		Pitch = pitch;
 		updateCameraVectors();
+	}
+
+	void init()
+	{
+		// mouse things
+		firstMouse = true;
+		lastX = 1024 / 2.0f;
+		lastY = 768 / 2.0f;
+	}
+
+	// glfw: whenever the mouse moves, this callback is called
+	// -------------------------------------------------------
+	void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+	{
+		if (firstMouse)
+		{
+			lastX = xpos;
+			lastY = ypos;
+			firstMouse = false;
+		}
+
+		float xoffset = xpos - lastX;
+		float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+		lastX = xpos;
+		lastY = ypos;
+
+		ProcessMouseMovement(xoffset, yoffset);
+	}
+
+	// glfw: whenever the mouse scroll wheel scrolls, this callback is called
+	// ----------------------------------------------------------------------
+	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+	{
+		ProcessMouseScroll(yoffset);
 	}
 
 	// Returns the view matrix calculated using Eular Angles and the LookAt Matrix

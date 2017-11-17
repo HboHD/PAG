@@ -20,10 +20,11 @@ private:
 	Window *window;
 	Texture *texture;
 	Texture *texture2;
+	Texture *texture3;
 	Mesh *mesh;
 	Shader *shader;
 	Transform *transform;
-	Camera camera;
+	Camera *camera;
 	bool game_is_running;
 	const int TICKS_PER_SECOND = 50;
 	const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
@@ -31,16 +32,12 @@ private:
 
 	unsigned int *VBO, *VAO, *EBO;
 	float *cameraSpeed;
-	bool firstMouse;
-	GLfloat lastX, lastY;
 	float yaw, pitch;
 
 	void init();
 	void updateGame();
 	void processInput(GLFWwindow *window);
 	void renderGame();
-	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 public:
 	Core();
 	~Core();
