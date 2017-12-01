@@ -40,7 +40,7 @@ bool Window::init()
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
 
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	std::cout << "Finished Window initialization" << std::endl;
 }

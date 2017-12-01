@@ -17,8 +17,8 @@ private:
 	Texture *texture;
 
 	// settings
-	const unsigned int SCR_WIDTH = 1024;
-	const unsigned int SCR_HEIGHT = 768;
+	const unsigned int SCR_WIDTH = 1600;
+	const unsigned int SCR_HEIGHT = 900;
 
 public:
 	const unsigned int getScrWidth();

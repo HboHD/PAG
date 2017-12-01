@@ -10,7 +10,7 @@
 // Default camera values
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
-const float SPEED = 2.5f;
+const float SPEED = 3.0f;
 const float SENSITIVTY = 0.1f;
 const float ZOOM = 45.0f;
 
@@ -27,7 +27,11 @@ public:
 		FORWARD,
 		BACKWARD,
 		LEFT,
-		RIGHT
+		RIGHT,
+		ROTUP,
+		ROTDOWN,
+		ROTLEFT,
+		ROTRIGHT
 	};
 	// Camera Attributes
 	glm::vec3 Position;
@@ -117,6 +121,18 @@ public:
 			Position -= Right * velocity;
 		if (direction == RIGHT)
 			Position += Right * velocity;
+
+		if (direction == ROTUP)
+			Pitch += 6.0f * velocity;
+		if (direction == ROTDOWN)
+			Pitch -= 6.0f * velocity;
+		if (direction == ROTLEFT)
+			Yaw -= 6.0f * velocity;
+		if (direction == ROTRIGHT)
+			Yaw += 6.0f * velocity;
+
+		// Update Front, Right and Up Vectors using the updated Eular angles
+		updateCameraVectors();
 	}
 
 	// Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
